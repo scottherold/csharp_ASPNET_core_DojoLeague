@@ -1,0 +1,48 @@
+@model Ninja
+<!-- Insert Model Here -->
+<div class="row justify-content-center">
+    <div class="col-lg-10 rounded justify-content-center m-4 bg-white">
+        <div class="row justify-content-center m-3">
+            <h3 class="mt-1 mb-4">Ninja Information</h3>
+        </div>
+        <div class="row m-3">
+            <div class="col-md-3 text-left">
+                <h5>Name:</h5>
+            </div>
+            <div class="col-md-9 justify-content-start">
+                <h6>@Model.name</h6>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-md-3 text-left">
+                <h5>Ninja Level:</h5>
+            </div>
+            <div class="col-md-9 justify-content-start">
+                <h6>@Model.level</h6>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-md-3 text-left">
+                <h5>Description:</h5>
+            </div>
+            <div class="col-md-9 justify-content-start">
+                <h6>@Model.description</h6>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-md-3 text-left">
+                <h5>Current Dojo:</h5>
+            </div>
+            <div class="col-md-9 justify-content-start">
+                @if (@Model.dojo_id == null)
+                {
+                    <h6>Rogue</h6>
+                }
+                else
+                {
+                    <h6><a href="/dojo/@Model.dojo.dojo_id" class="text-dark">@Model.dojo.name</a></h6>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+@model Dojo
+<!-- Insert Model Here -->
+<div class="row justify-content-center">
+    <div class="col-lg-10 rounded justify-content-center m-4 bg-white">
+        <div class="row justify-content-center m-3">
+            <div class="col-lg-3 mt-3 mb-3 border-right border-dark bg-white text-center">
+                <h3 class="mt-1 mb-4">All Dojos</h3>
+                <table class="table table-striped table-hover table-sm">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Dojo Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var dojo in ViewBag.allDojos)
+                        {
+                            // removes Rogue from the dojo list
+                            @if (dojo.name == "Rogue")
+                            {
+
+                            }
+                            else
+                            {
+                            <tr>
+                                <td><a href="/dojo/@dojo.dojo_id" class="text-dark">@dojo.name</a></td>
+                            </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6 mt-3 mb-3 border-left border-dark bg-white text-center">
+                <h3 class="mt-1 mb-4">Register a Dojo</h3>
+                <form asp-action="CreateDojo" asp-controller="Main" method="POST">
+                    <div class="row mb-2">
+                        <div class="col-md-5 text-left">
+                            <label asp-for="name"><h5>Dojo Name:</h5></label>
+                        </div>
+                        <div class="col-lg-5 justify-content-start">
+                            <input type="text" asp-for="name">
+                            <p><span asp-validation-for="name" class="text-danger"></span></p>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-5 text-left">
+                            <label asp-for="location"><h5>Dojo Location:</h5></label>
+                        </div>
+                        <div class="col-lg-5 justify-content-start">
+                            <input type="text" asp-for="location">
+                            <p><span asp-validation-for="location" class="text-danger"></span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md text-left">
+                            <label asp-for="description"><h5>Additional Dojo Information:</h5></label>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-12 justify-content-start">
+                            <textarea class="w-100" asp-for="description" rows="5"></textarea>
+                            <p><span asp-validation-for="description" class="text-danger"></span></p>
+                        </div>
+                    </div>
+                    <div class="row mb-2 justify-content-center">
+                        <button type="submit" class="btn btn-dark">Add</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3 mt-3 mb-3">
+                <img src="~/images/dojocat.jpg" alt="Dojo Ninja!" />
+            </div>
+        </div>
+    </div>
+</div>
